@@ -1,0 +1,9 @@
+{
+    "data": "path-to-data",
+    "interface": {
+        "fields": ["title", "desc", "keywords"]
+    },
+    "label": {
+        "values": [0, 1]
+    }
+}
