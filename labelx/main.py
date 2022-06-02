@@ -46,6 +46,7 @@ def hello_world():
                            index=index,
                            row=current_row,
                            fields=selected_fields_indexes,
+                           fields_names=fields,
                            label_values=config["label"]["values"],
                            progress=round(progress, 2),
                            count=output_len,

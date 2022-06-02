@@ -29,10 +29,8 @@
                     {% endfor %}
                 </div>
                 {% for value in fields %}
-                <h5 class="card-title">{{ row[value] }}</h5>
+                <h5 class="card-title"><strong>{{ fields_names[value] }}: </strong>{{ row[value] }}</h5>
                 {% endfor %}
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p> -->
             </div>
         </div>
     </div>
