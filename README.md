@@ -9,11 +9,11 @@ source env/bin/activate
 ```
 Installing dependencies:
 ```
-make setup
+make
 ```
 Starting project:
 ```
-make
+make run
 ```
 Labelling interface now available at `http://127.0.0.1:5000`.
 
