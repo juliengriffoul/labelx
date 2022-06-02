@@ -1,9 +1,12 @@
 {
-    "data": "path-to-data",
+    "input": "/home/julien/Téléchargements/resourcetemp_2022_05_03.csv",
+    "output": "/home/julien/Téléchargements/resourcetemp_2022_05_03_labelled.csv",
     "interface": {
-        "fields": ["title", "desc", "keywords"]
+        "fields": ["title", "language", "keywords", "source", "desc"],
+        "theme": "dark"
     },
     "label": {
+        "name": "junk",
         "values": [0, 1]
     }
 }
