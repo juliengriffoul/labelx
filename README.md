@@ -1,5 +1,7 @@
 # labelx
 Web application intending to make manual datasets labelling easier.
+<p align="center"><img width="800" src="docs/demo.gif" /></p>
+
 ### Project setup
 Installing virtual environment:
 ```
