@@ -13,23 +13,9 @@ Iterating manually over the CSV file is not the more efficient way to do it.
 With this project, you define the label settings and the labelling interface appearance and quickier your manual labelling.
 
 ### Demo
-
-### Project setup
-Installing virtual environment:
-```
-python3 -m pip install --user virtualenv
-python3 -m venv env
-source env/bin/activate
-```
-Installing dependencies:
-```
-make
-```
-Starting project:
-```
-make run
-```
-Labelling interface now available at `http://127.0.0.1:5000`.
+<p align="center">
+    <img src="docs/demo.gif" width="800" />
+</p>
 
 ### Configuration
 Update the `config.json` file to configure project.
@@ -47,3 +33,20 @@ Update the `config.json` file to configure project.
     }
 }
 ```
+
+### Project setup
+Installing virtual environment:
+```
+python3 -m pip install --user virtualenv
+python3 -m venv env
+source env/bin/activate
+```
+Installing dependencies:
+```
+make
+```
+Starting project:
+```
+make run
+```
+Labelling interface now available at `http://127.0.0.1:5000`.
