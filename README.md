@@ -1,5 +1,5 @@
 # labelx
-Web application intending to make manual datasets labelling easier.
+A Flask application to manually label an existing dataset.
 
 ### Example scenario
 You want to create a training dataset for your next model. You have your `assets/cars.csv` with already several fields:
@@ -21,8 +21,11 @@ With this project, you define the label settings and the labelling interface app
 Update the `config.json` file to configure project.
 ```
 {
-    "input": "assets/cars.csv",
-    "output": "assets/labelled_cars.csv",
+    "data": {
+        "input": "assets/cars.csv",
+        "output": "assets/labelled_cars.csv",
+        "delimiter": ";"
+    },
     "interface": {
         "fields": ["Car", "Model", "Origin"],
         "theme": "light"
@@ -34,19 +37,26 @@ Update the `config.json` file to configure project.
 }
 ```
 
-### Project setup
-Installing virtual environment:
+### Setup instructions
+1. Installing virtual environment:
 ```
 python3 -m pip install --user virtualenv
 python3 -m venv env
 source env/bin/activate
 ```
-Installing dependencies:
+2. Installing dependencies:
 ```
 make
 ```
-Starting project:
+3. Starting project:
 ```
 make run
 ```
 Labelling interface now available at `http://127.0.0.1:5000`.
+
+### Roadmap
+- Fix setuptools configuration;
+- Handle errors use cases (no config, no input, etc.);
+- Improve CI;
+- Setup release flow;
+- Implement skip button.
