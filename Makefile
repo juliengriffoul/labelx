@@ -11,6 +11,7 @@ endif
 all: install test-cov
 
 install: clean
+	pip install setuptools==36.4.0
 	python setup.py install $(USER_OR_VENV)
 
 lint:
