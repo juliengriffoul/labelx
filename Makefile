@@ -11,7 +11,7 @@ endif
 all: install test-cov
 
 install: clean
-	pip install -r /path/to/requirements.txt
+	pip install -r requirements.txt
 	python setup.py install $(USER_OR_VENV)
 
 lint:
