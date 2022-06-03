@@ -1,6 +1,18 @@
 # labelx
 Web application intending to make manual datasets labelling easier.
-<p align="center"><img width="800" src="docs/demo.gif" /></p>
+
+### Example scenario
+You want to create a training dataset for your next model. You have your `assets/cars.csv` with already several fields:
+```
+Car;MPG;Cylinders;Displacement;Horsepower;Weight;Acceleration;Model;Origin
+```
+On top of these, you want to add a custom field with a special value that actually, just a human can set.
+For example: `Good_Looking`, with two possible values `Yes` and `Ǹo`.  
+The objective is to go through a maximum of dataset rows and set this value.
+Iterating manually over the CSV file is not the more efficient way to do it.  
+With this project, you define the label settings and the labelling interface appearance and quickier your manual labelling.
+
+### Demo
 
 ### Project setup
 Installing virtual environment:
@@ -23,15 +35,15 @@ Labelling interface now available at `http://127.0.0.1:5000`.
 Update the `config.json` file to configure project.
 ```
 {
-    "input": <path to input csv file>,
-    "output": <path where output csv file will be generated>,
+    "input": "assets/cars.csv",
+    "output": "assets/labelled_cars.csv",
     "interface": {
-        "fields": <array of fields to display on the interface (["id", "col_a", "col_c"])>,
-        "theme": <"light" or "dark">
+        "fields": ["Car", "Model", "Origin"],
+        "theme": "light"
     },
     "label": {
-        "name": <label field name (CSV column name)>,
-        "values": [0, 1]
+        "name": "Good_Looking",
+        "values": ["Yes", "No"]
     }
 }
 ```
