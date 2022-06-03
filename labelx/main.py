@@ -1,6 +1,6 @@
 import sys
 import os
-from csv import reader, writer, field_size_limit
+from csv import field_size_limit
 from flask import Flask, render_template, request
 from file import *
 
@@ -13,20 +13,27 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET"])
-def hello_world():
+def index():
+    if not config:
+        return render_template("error.html", message="config file not found.")
+
     current_row = None
     delimiter = config["data"]["delimiter"] or ","
     selected_fields = config["interface"]["fields"]
     last_labelled_row_index = request.args.get('index')
     last_label_value = request.args.get('label')
-    output_len = 0
     labelled_rows = []
 
-    if os.path.exists(config["data"]["output"]):
-        output_len = get_length_of_csv_file(config["data"]["output"])
+    output_len = get_length_of_csv_file(config["data"]["output"])
 
-    fields, selected_fields_indexes, index, last_row = get_fields_indexes_of_csv_file(
+    indexes = get_fields_indexes_of_csv_file(
         config["data"]["input"], delimiter, selected_fields, last_labelled_row_index)
+
+    if not indexes:
+        return render_template("error.html", message="input file not found.")
+
+    fields, selected_fields_indexes, index, last_row = indexes
+
     fields.append(config["label"]["name"])
 
     if last_row:
@@ -40,6 +47,10 @@ def hello_world():
         output_len = get_length_of_csv_file(config["data"]["output"])
 
     input_len = get_length_of_csv_file(config["data"]["input"])
+
+    if not input_len:
+        return render_template("error.html")
+
     progress = output_len * 100 / input_len
     index, current_row = get_first_non_labelled_row(
         config["data"]["input"], delimiter, labelled_rows)
