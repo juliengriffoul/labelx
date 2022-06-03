@@ -11,7 +11,7 @@ endif
 all: install test-cov
 
 install: clean
-	pip install setuptools==36.4.0
+	pip install setuptools==36.4.0 flask
 	python setup.py install $(USER_OR_VENV)
 
 lint:
