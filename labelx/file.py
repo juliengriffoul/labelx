@@ -36,14 +36,14 @@ def get_rows_of_csv_file(path, delimiter):
 
 
 def get_first_non_labelled_row(path, delimiter, labelled_rows):
-    index = 0
+    index = -1
 
     with open(path, encoding="utf-8") as file:
         csv_reader = reader(file, delimiter=delimiter)
 
         for row in csv_reader:
-            if len(labelled_rows) == 0 and index == 0:  # Skip fields row
-                index = 1
+            if len(labelled_rows) == 0 and index == -1:  # Skip fields row
+                index = 0
                 continue
 
             if row not in labelled_rows:
