@@ -13,9 +13,9 @@ def get_length_of_csv_file(path):
         return len(list(csv_reader))
 
 
-def append_row_to_csv_file(path, length, fields, row):
+def append_row_to_csv_file(path, delimiter, length, fields, row):
     with open(path, "a", encoding="utf-8") as file:
-        csv_writer = writer(file)
+        csv_writer = writer(file, delimiter=delimiter)
 
         if length == 0:
             csv_writer.writerow(fields)
@@ -23,11 +23,11 @@ def append_row_to_csv_file(path, length, fields, row):
         csv_writer.writerow(row)
 
 
-def get_rows_of_csv_file(path):
+def get_rows_of_csv_file(path, delimiter):
     rows = []
 
     with open(path, "r", encoding="utf-8") as file:
-        csv_reader = reader(file)
+        csv_reader = reader(file, delimiter=delimiter)
 
         for row in csv_reader:
             rows.append(row[:-1])
@@ -35,13 +35,17 @@ def get_rows_of_csv_file(path):
     return rows
 
 
-def get_first_non_labelled_row(path, labelled_rows):
-    index = -1
+def get_first_non_labelled_row(path, delimiter, labelled_rows):
+    index = 0
 
     with open(path, encoding="utf-8") as file:
-        csv_reader = reader(file)
+        csv_reader = reader(file, delimiter=delimiter)
 
         for row in csv_reader:
+            if len(labelled_rows) == 0 and index == 0:  # Skip fields row
+                index = 1
+                continue
+
             if row not in labelled_rows:
                 current_row = row
                 break
@@ -51,14 +55,14 @@ def get_first_non_labelled_row(path, labelled_rows):
     return index, current_row
 
 
-def get_fields_indexes_of_csv_file(path, selected_fields, last_labelled_row_index):
+def get_fields_indexes_of_csv_file(path, delimiter, selected_fields, last_labelled_row_index):
     index = 0
     selected_fields_indexes = []
     fields = None
     last_row = None
 
     with open(path, encoding="utf-8") as file:
-        csv_reader = reader(file)
+        csv_reader = reader(file, delimiter=delimiter)
 
         for row in csv_reader:
             if not fields:
