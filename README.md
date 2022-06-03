@@ -56,7 +56,7 @@ Labelling interface now available at `http://127.0.0.1:5000`.
 
 ### Roadmap
 - Fix setuptools configuration;
-- Handle errors use cases (no config, no input, etc.);
-- Improve CI;
+- Improve CI (linting, etc.);
 - Setup release flow;
-- Implement skip button.
+- Implement skip button;
+- Local Bootstrap.

@@ -1,16 +1,23 @@
 import json
+import os
 from csv import reader, writer
 
 
 def parse_config_file(path):
-    with open(path, "r", encoding="utf-8") as file:
-        return json.load(file)
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return None
 
 
 def get_length_of_csv_file(path):
-    with open(path, "r", encoding="utf-8") as file:
-        csv_reader = reader(file)
-        return len(list(csv_reader))
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            csv_reader = reader(file)
+            return len(list(csv_reader))
+    except FileNotFoundError:
+        return 0
 
 
 def append_row_to_csv_file(path, delimiter, length, fields, row):
@@ -61,20 +68,23 @@ def get_fields_indexes_of_csv_file(path, delimiter, selected_fields, last_labell
     fields = None
     last_row = None
 
-    with open(path, encoding="utf-8") as file:
-        csv_reader = reader(file, delimiter=delimiter)
+    try:
+        with open(path, encoding="utf-8") as file:
+            csv_reader = reader(file, delimiter=delimiter)
 
-        for row in csv_reader:
-            if not fields:
-                fields = row
-                for field in selected_fields:
-                    selected_fields_indexes.append(fields.index(field))
-                continue
+            for row in csv_reader:
+                if not fields:
+                    fields = row
+                    for field in selected_fields:
+                        selected_fields_indexes.append(fields.index(field))
+                    continue
 
-            if last_labelled_row_index and index == int(last_labelled_row_index):
-                last_row = row
-                break
+                if last_labelled_row_index and index == int(last_labelled_row_index):
+                    last_row = row
+                    break
 
-            index += 1
+                index += 1
 
-    return fields, selected_fields_indexes, index, last_row
+        return fields, selected_fields_indexes, index, last_row
+    except FileNotFoundError:
+        return None
