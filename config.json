@@ -1,12 +1,15 @@
 {
-    "input": "assets/example_input.csv",
-    "output": "assets/generated_output.csv",
+    "data": {
+        "input": "assets/cars.csv",
+        "output": "assets/labelled_cars.csv",
+        "delimiter": ";"
+    },
     "interface": {
-        "fields": ["name", "population"],
+        "fields": ["Car", "Model", "Origin"],
         "theme": "light"
     },
     "label": {
-        "name": "my_label",
-        "values": [0, 1]
+        "name": "Good_Looking",
+        "values": ["Yes", "No"]
     }
 }
