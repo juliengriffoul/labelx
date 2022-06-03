@@ -1,12 +1,12 @@
 {
-    "input": "/home/julien/Téléchargements/resourcetemp_2022_05_03.csv",
-    "output": "/home/julien/Téléchargements/resourcetemp_2022_05_03_labelled.csv",
+    "input": "assets/example_input.csv",
+    "output": "assets/generated_output.csv",
     "interface": {
-        "fields": ["title", "language", "keywords", "source", "desc"],
-        "theme": "dark"
+        "fields": ["name", "population"],
+        "theme": "light"
     },
     "label": {
-        "name": "junk",
+        "name": "my_label",
         "values": [0, 1]
     }
 }
