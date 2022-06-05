@@ -1,4 +1,7 @@
 # labelx
+![GitHub](https://img.shields.io/github/license/juliengriffoul/labelx)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/juliengriffoul/labelx/main?label=last%20commit%20on%20main)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/juliengriffoul/labelx/makefile/main)  
 A Flask application to manually label an existing dataset.
 
 ### Example scenario
