@@ -9,7 +9,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
-<body class="bg-{{ theme }}">
+<body id="labelx" class="bg-{{ theme }}">
     <div class="container mt-3">
         <h2 class="{{ color }}">labelx</h2>
         <hr class="{{ color }}">
@@ -27,7 +27,6 @@
                     {% for value in label_values %}
                     <a href="?index={{ index }}&label={{ value }}" class="btn btn-primary">{{ value }}</a>
                     {% endfor %}
-                    <a href="?index={{ index }}&label=skip" class="btn btn-secondary disabled" disabled>Skip</a>
                 </div>
                 {% for value in fields %}
                 <h5 class="card-title"><strong>{{ fields_names[value] }}: </strong>{{ row[value] }}</h5>
@@ -41,6 +40,22 @@
     <script>
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        const labels = []
+
+        {% for value in label_values %}
+        labels.push('{{ value }}')
+        {% endfor %}
+
+        const labelx = document.getElementById('labelx')
+        labelx.addEventListener("keypress", (event) => {
+            if (event.code.startsWith('Digit')) {
+                const index = parseInt(event.code.split('Digit')[1], 10) - 1
+                const label = labels[index]
+                if (label) {
+                    window.location.href = `?index={{ index }}&label=${label}`
+                }
+            }
+        });
     </script>
 </body>
 
