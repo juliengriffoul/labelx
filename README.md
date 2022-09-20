@@ -59,6 +59,7 @@ Labelling interface now available at `http://127.0.0.1:5000`.
 
 ### Roadmap
 - Fix setuptools configuration;
+    - Replace with Poetry?
 - Improve CI (linting, etc.);
 - Setup release flow;
 - Implement skip button;

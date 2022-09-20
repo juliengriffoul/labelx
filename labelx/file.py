@@ -44,6 +44,7 @@ def get_rows_of_csv_file(path, delimiter):
 
 def get_first_non_labelled_row(path, delimiter, labelled_rows):
     index = -1
+    current_row = None
 
     with open(path, encoding="utf-8") as file:
         csv_reader = reader(file, delimiter=delimiter)
